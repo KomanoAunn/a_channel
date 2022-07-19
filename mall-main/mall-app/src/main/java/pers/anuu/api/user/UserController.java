@@ -4,7 +4,7 @@ import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pers.anuu.service.UserService;
-import response.BaseResponse;
+import pers.anuu.response.BaseResponse;
 
 /**
  * @author pangxiong

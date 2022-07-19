@@ -1,11 +1,11 @@
-package response;
+package pers.anuu.response;
 
 /**
  * @author pangxiong
- * @title: ErrorResponse
+ * @title: SuccessResponse
  * @projectName a_channel
  * @description: TODO
  * @date 2022/7/1314:08
  */
-public class ErrorResponse {
+public class SuccessResponse {
 }

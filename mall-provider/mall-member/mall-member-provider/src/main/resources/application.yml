@@ -2,15 +2,15 @@ spring:
   application:
     name: dubbo-member-provider
   datasource:
-    url: jdbc:mysql://124.223.90.7:3307/a_channel?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false
-    username: root
-    password: mysql123456
+    url: ENC(S53QVo+WT212cUvVOrJ3K/5jiToUyr6DJ+1cUatNJkCDtNUAfk/Be4CsAaWruRWodvFwgeUMnfS666N4CSFDc6ME0ggGEW4/CM0E1ENRbBRJWIYO9A1fC52mSlMAemJeJc4qS+Kuq2Vv1d8U/G/hd6s7qn1vFx7DCXclmA1iK6S/m6cmJ6CYRphDcZY8IkyuuswfbGxcufJfX5hbXtNBEw==)
+    username: ENC(gMRf3n52MuFKrgeSGVQgZW7Lo5OJkcIoBRH19Uvhvl4BmVpiQUEZmKACrqskVxiF)
+    password: ENC(xNI/0r6KQBy7YC6T7YmcSvJ4zN89MSsZm1aO7wRTzCMlxyu09hH766MRKzPtCczs)
 
 # Dubbo Protocol
 dubbo:
   registry:
     id: zk-registry
-    address: zookeeper://124.223.90.7:2181?timeout=600000
+    address: zookeeper://124.223.90.7:2181?timeout=6000
   protocol:
     name: dubbo
     port: 21800
