@@ -15,6 +15,7 @@
     <modules>
         <module>mall-common-core</module>
         <module>mall-common-mq</module>
+        <module>mall-common-mybatis</module>
     </modules>
 
     <properties>
