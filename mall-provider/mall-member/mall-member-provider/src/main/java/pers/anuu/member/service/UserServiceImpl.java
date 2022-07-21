@@ -5,6 +5,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Transactional;
 import pers.anuu.coupon.model.Coupon;
+import pers.anuu.coupon.service.CouponService;
 import pers.anuu.member.model.User;
 
 import javax.annotation.Resource;

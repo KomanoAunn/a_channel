@@ -1,33 +1,28 @@
 package pers.anuu.mybatis.generator;
 
-import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
+import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
+import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author pangxiong
  * @title: MysqlGenerator
  * @projectName a_channel
- * @description: TODO
+ * @description:
  * @date 2022/7/2010:41
  */
 public class MysqlGenerator {
 
-    // 数据库 URL
-    private static final String URL = "jdbc:mysql://124.223.90.7:3307/a_channel?useUnicode=true&characterEncoding=UTF" +
-            "-8" +
-            "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     // 数据库驱动
     private static final String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
-    // 数据库用户名
-    private static final String USERNAME = "a_poject_01";
-    // 数据库密码
-    private static final String PASSWORD = "a_write@s!x)";
     // @author 值
     private static final String AUTHOR = "KomanoAunn";
     // 包的基础路径
@@ -44,12 +39,29 @@ public class MysqlGenerator {
     private static final String SERVICE_TEMPLATE_PATH = "/templates/service.java";
     // serviceImpl 文件模板
     private static final String SERVICE_IMPL_TEMPLATE_PATH = "/templates/serviceImpl.java";
-//    // controller 文件模板
-//    private static final String CONTROLLER_TEMPLATE_PATH = "/templates/controller.java";
+    // 数据库 URL
+    private static String URL = null;
+    // 数据库用户名
+    private static String USERNAME = null;
+    // 数据库密码
+    private static String PASSWORD = null;
+    // 业务模块名称
+    private static String MODULE_NAME = null;
 
-    public static void main(String[] args) {
+    private MysqlGenerator(String url, String username, String password, String modelName) {
+        URL = url;
+        USERNAME = username;
+        PASSWORD = password;
+        MODULE_NAME = modelName;
+    }
+
+    public static MysqlGenerator getInstance(String url, String username, String password, String modelName) {
+        MysqlGenerator mysqlGenerator = new MysqlGenerator(url, username, password, modelName);
+        return mysqlGenerator;
+    }
+
+    public void build(String table) {
         AutoGenerator generator = new AutoGenerator();
-
         // 全局配置
         GlobalConfig globalConfig = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
@@ -70,7 +82,7 @@ public class MysqlGenerator {
 
         // 包配置
         PackageConfig packageConfig = new PackageConfig();
-        packageConfig.setModuleName("member");
+        packageConfig.setModuleName(MODULE_NAME);
         packageConfig.setParent(BASE_PACKAGE_URL);
         generator.setPackageInfo(packageConfig);
 
@@ -81,7 +93,6 @@ public class MysqlGenerator {
         templateConfig.setEntity(ENTITY_TEMPLATE_PATH);
         templateConfig.setService(SERVICE_TEMPLATE_PATH);
         templateConfig.setServiceImpl(SERVICE_IMPL_TEMPLATE_PATH);
-        //templateConfig.setController(CONTROLLER_TEMPLATE_PATH);
         generator.setTemplate(templateConfig);
 
         // 策略配置
@@ -90,7 +101,7 @@ public class MysqlGenerator {
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
-        strategy.setInclude("user");
+        strategy.setInclude(table);
         strategy.setSuperEntityColumns("id");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(packageConfig.getModuleName() + "_");
@@ -99,15 +110,8 @@ public class MysqlGenerator {
         generator.execute();
     }
 
-    private static String scanner(String tip) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(("请输入" + tip + "："));
-        if (scanner.hasNext()) {
-            String ipt = scanner.next();
-            if (null != ipt && !"".equals(ipt)) {
-                return ipt;
-            }
-        }
-        throw new MybatisPlusException("请输入正确的" + tip + "！");
+    public static void main(String[] args) {
+
     }
+
 }
