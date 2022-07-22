@@ -7,5 +7,9 @@ package pers.anuu.core.response;
  * @description: TODO
  * @date 2022/7/1314:08
  */
-public class ErrorResponse {
+public class ErrorResponse extends BaseResponse {
+
+    public ErrorResponse(String msg){
+        super(ResponseCodeEnum.FAIL.getCode(), msg);
+    }
 }

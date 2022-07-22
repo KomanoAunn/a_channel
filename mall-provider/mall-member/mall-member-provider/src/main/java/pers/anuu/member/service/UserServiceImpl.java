@@ -1,29 +1,33 @@
 package pers.anuu.member.service;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Transactional;
-import pers.anuu.coupon.model.Coupon;
-import pers.anuu.coupon.service.CouponService;
+import pers.anuu.coupon.service.IScCouponService;
+import pers.anuu.member.mapper.UserMapper;
 import pers.anuu.member.model.User;
 
 import javax.annotation.Resource;
-import java.math.BigDecimal;
 
 /**
- * @author pangxiong
- * @title: UserServiceImpl
- * @projectName a_channel
- * @description: TODO
- * @date 2022/7/1410:40
+ * <p>
+ * 服务实现类
+ * </p>
+ *
+ * @author KomanoAunn
+ * @since 2022-07-22
  */
 @DubboService
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+
     @Resource
     private JdbcTemplate jdbcTemplate;
     @DubboReference
-    private CouponService couponService;
+    private IScCouponService couponService;
+    @Resource
+    private IUserCouponService userCouponService;
 
     @Override
     public String sayUserName(String username) {
@@ -34,16 +38,6 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void login(Long id) {
-        Coupon coupon = new Coupon();
-        coupon.setName("测试券");
-        coupon.setAmount(BigDecimal.TEN);
-        coupon.setUserId(id);
-        couponService.sendCoupon(coupon);
 
-        User user = new User();
-        jdbcTemplate.update("UPDATE user SET last_login_time=NOW() WHERE id=" + id);
-        if (id == 1) {
-            throw new RuntimeException("!!!!!!!!TEST MUST EXCEPTION!!!!!!!");
-        }
     }
 }

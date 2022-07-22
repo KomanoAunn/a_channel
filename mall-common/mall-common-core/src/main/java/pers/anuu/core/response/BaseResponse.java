@@ -26,4 +26,8 @@ public class BaseResponse implements Serializable {
     public static BaseResponse successResponse() {
         return new SuccessResponse();
     }
+
+    public static BaseResponse errorResponse(String msg) {
+        return new ErrorResponse(msg);
+    }
 }

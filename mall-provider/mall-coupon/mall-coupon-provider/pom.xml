@@ -25,8 +25,7 @@
         <dependency>
             <groupId>pers.anuu</groupId>
             <artifactId>mall-coupon-api</artifactId>
-            <!-- 换成快照版本就报错？ TODO-->
-            <version>1.1</version>
+            <version>1.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

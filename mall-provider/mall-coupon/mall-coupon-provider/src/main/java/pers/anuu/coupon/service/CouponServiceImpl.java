@@ -3,7 +3,7 @@ package pers.anuu.coupon.service;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Transactional;
-import pers.anuu.coupon.model.Coupon;
+import pers.anuu.coupon.model.ScCoupon;
 
 import javax.annotation.Resource;
 
@@ -21,8 +21,8 @@ public class CouponServiceImpl implements CouponService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void sendCoupon(Coupon coupon) {
+    public void sendCoupon(ScCoupon coupon) {
         jdbcTemplate.execute(String.format("INSERT INTO coupon(`amount`,`name`,`user_id`) " +
-                "VALUES('%s','%s','%s')",coupon.getAmount(),coupon.getName(),coupon.getUserId()));
+                "VALUES('%s','%s','%s')", coupon.getAmount(), coupon.getName(), null));
     }
 }

@@ -31,6 +31,7 @@
         <mysql.connection.version>8.0.11</mysql.connection.version>
         <jasypt.version>3.0.2</jasypt.version>
         <freemarker.version>2.3.29</freemarker.version>
+        <spring.context.version>5.1.12.RELEASE</spring.context.version>
     </properties>
 
     <dependencies>
@@ -64,6 +65,12 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-jdbc</artifactId>
                 <version>${spring_boot_version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.context.version}</version>
             </dependency>
             <!--fastjson-->
             <dependency>

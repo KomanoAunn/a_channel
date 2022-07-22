@@ -1,6 +1,6 @@
 package pers.anuu.coupon.service;
 
-import pers.anuu.coupon.model.Coupon;
+import pers.anuu.coupon.model.ScCoupon;
 
 /**
  * @author pangxiong
@@ -10,5 +10,5 @@ import pers.anuu.coupon.model.Coupon;
  * @date 2022/7/1815:53
  */
 public interface CouponService {
-    void sendCoupon(Coupon coupon);
+    void sendCoupon(ScCoupon coupon);
 }

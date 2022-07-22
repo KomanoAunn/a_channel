@@ -17,23 +17,15 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class User implements Serializable {
+public class UserCoupon implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String nickname;
+    private Integer couponId;
 
-    private String headImg;
-
-    private String loginCode;
-
-    private String password;
-
-    private Date lastLoginTime;
+    private Integer userId;
 
     private Date addTime;
-
-    private Date updateTime;
 
 
 }

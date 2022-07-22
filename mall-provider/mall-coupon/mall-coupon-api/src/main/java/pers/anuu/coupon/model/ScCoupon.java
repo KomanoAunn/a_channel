@@ -1,5 +1,6 @@
-package pers.anuu.member.model;
+package pers.anuu.coupon.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.io.Serializable;
 import lombok.Data;
@@ -17,23 +18,20 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class User implements Serializable {
+public class ScCoupon implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String nickname;
+    private BigDecimal amount;
 
-    private String headImg;
+    private String name;
 
-    private String loginCode;
-
-    private String password;
-
-    private Date lastLoginTime;
+    /**
+     * 使用门槛
+     */
+    private BigDecimal limitAmount;
 
     private Date addTime;
-
-    private Date updateTime;
 
 
 }
